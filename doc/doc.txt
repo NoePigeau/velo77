@@ -1,0 +1,26 @@
+vélo 77
+
+page connexion / inscription -> vérif de mails / mdp oubliés
+
+page accueil :  présentation boutique ect, ...
+
+page géolocalisation des magasins : info google
+
+page panel : info des vélo pré-construit -> neuf/occas , vtt / route-course / CX / TT / tandem / ville , normal / electric , marque , taille vélo , matériaux , ect...
+	    -> info des pieces vélo et assemblage vélo théorique 
+	    -> réservation vélo / enregistrer vélo dans une rubrique intéressé
+	    -> promotion
+
+             textile->  casque , chausette , chaussure , vetements, ...
+             
+             matériel -> chambre à air, chaine, cassette, ect ...
+
+
+page atelier : -> prendre rdv réparation vélo ?,
+               -> notif lorsque velo fini,
+               
+
+
+
+
+
