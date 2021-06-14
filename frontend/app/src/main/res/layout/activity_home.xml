@@ -9,18 +9,26 @@
     tools:context=".HomeActivity"
     tools:ignore="NamespaceTypo">
 
-        <LinearLayout
-            android:layout_width="195dp"
-            android:layout_height="123dp"
-            android:layout_gravity="center"
-            android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/transparent" />
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/transparent" />
+
+        <Button
+            android:id="@+id/btn_bikes"
+            android:layout_width="285dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:text="SE CONNECTER"
+            app:backgroundTint="#7CCB31"
+            app:cornerRadius="30dp" />
+
+
 </LinearLayout>
 
 

@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Nos Vélos"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="15dp"
         android:id="@+id/text_bike"
         android:layout_margin="70dp"
         android:gravity="center_horizontal"
