@@ -42,7 +42,7 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
     }
 
     private void executeHttpRequest(){
-        new NetworkAsyncTask(this).execute("https://api.github.com/users/JakeWharton/following");
+        new NetworkAsyncTask(this).execute("http://transport.opendata.ch/v1/connections?from=Lausanne&to=Gen%C3%A8ve");
     }
 
     @Override
