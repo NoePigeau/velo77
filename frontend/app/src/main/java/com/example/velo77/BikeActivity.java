@@ -29,10 +29,10 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
         setContentView(R.layout.activity_bike);
 
 
-        this.textView = findViewById(R.id.text_bike);
+        /*this.textView = findViewById(R.id.text_bike);*/
 
         /*this.textView.setText( this.bonsoir() );*/
-        this.executeHttpRequest();
+        /*this.executeHttpRequest();*/
 
 
     }
