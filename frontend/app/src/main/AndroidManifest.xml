@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_velo77_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Velo77">
-        <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".BikeActivity"></activity>
-        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".BikeActivity" />
+        <activity android:name=".SignupActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

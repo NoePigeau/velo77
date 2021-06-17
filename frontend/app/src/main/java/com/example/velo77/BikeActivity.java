@@ -31,7 +31,7 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
 
 
     private void executeHttpRequest(){
-        new NetworkAsyncTask(this).execute("http://localhost:80/devweb/stage_velo77/backend/api/item/list.php");
+        new NetworkAsyncTask(this).execute("http://velo77:80/backend/api/item/list.php");
     }
 
     @Override
