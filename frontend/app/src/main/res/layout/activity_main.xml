@@ -60,7 +60,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:padding="15dp"
-            android:text="Entrée Visiteur"
+            android:text="ENTRER VISITEUR"
             app:backgroundTint="#7CCB31"
             app:cornerRadius="30dp" />
     </LinearLayout>

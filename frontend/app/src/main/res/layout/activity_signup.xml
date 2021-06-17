@@ -12,7 +12,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="176dp"
+        android:layout_height="207dp"
         android:orientation="vertical">
 
         <ImageView
@@ -25,45 +25,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="33dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="155dp"
-            android:layout_marginLeft="155dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginRight="100dp"
-            android:text="Inscription"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="360dp"
+        android:layout_height="230dp"
         android:orientation="vertical"
-        android:paddingTop="2dp">
-
-        <EditText
-            android:id="@+id/edt_firstname"
-            android:layout_width="282dp"
-            android:layout_height="68dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:hint="Prénom" />
-
-        <EditText
-            android:id="@+id/edt_lastname"
-            android:layout_width="282dp"
-            android:layout_height="68dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:hint="Nom" />
+        android:paddingTop="50dp">
 
         <EditText
             android:id="@+id/edt_email"
@@ -89,15 +53,14 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_signup"
+            android:id="@+id/btn_login"
             android:layout_width="298dp"
             android:layout_height="86dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:text="S'inscrire"
+            android:text="Connexion"
             app:backgroundTint="#7CCB31"
             app:cornerRadius="30dp" />
-
     </LinearLayout>
 
 

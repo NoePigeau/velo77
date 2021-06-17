@@ -1,15 +1,15 @@
 package com.example.velo77;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnVisitor, btnLogin, btnsignup ;
+    private Button btnVisitor, btnLogin, btnSignup ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.btnVisitor = findViewById(R.id.btn_enter);
         this.btnLogin = findViewById(R.id.btn_login);
-        this.btnsignup = findViewById(R.id.btn_signup);
+        this.btnSignup = findViewById(R.id.btn_signup);
 
         this.btnVisitor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        this.btnsignup.setOnClickListener(new View.OnClickListener() {
+        this.btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent( MainActivity.this , SignupActivity.class);

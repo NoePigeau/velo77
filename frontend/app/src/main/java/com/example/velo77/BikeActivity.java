@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.Listeners  {
 
     private TextView textView;
@@ -22,16 +23,8 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
 
     }
 
-
-    public String bonsoir(){
-        return "bonsoir";
-    }
-
-
-
-
     private void executeHttpRequest(){
-        new NetworkAsyncTask(this).execute("http://velo77:80/backend/api/item/list.php");
+        new NetworkAsyncTask(this).execute("http://transport.opendata.ch/v1/connections?from=Lausanne&to=Gen%C3%A8ve");
     }
 
     @Override
