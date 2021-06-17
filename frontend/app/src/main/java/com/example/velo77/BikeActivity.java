@@ -16,7 +16,7 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
 
 
         this.textView = findViewById(R.id.welcome);
-        
+
         this.executeHttpRequest();
 
 
