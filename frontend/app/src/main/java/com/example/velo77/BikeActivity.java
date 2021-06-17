@@ -2,22 +2,8 @@ package com.example.velo77;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
-
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.BreakIterator;
-
 
 public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.Listeners  {
 
@@ -29,20 +15,23 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
         setContentView(R.layout.activity_bike);
 
 
-        /*this.textView = findViewById(R.id.text_bike);*/
-
-        /*this.textView.setText( this.bonsoir() );*/
-        /*this.executeHttpRequest();*/
+        this.textView = findViewById(R.id.welcome);
+        
+        this.executeHttpRequest();
 
 
     }
+
 
     public String bonsoir(){
         return "bonsoir";
     }
 
+
+
+
     private void executeHttpRequest(){
-        new NetworkAsyncTask(this).execute("http://transport.opendata.ch/v1/connections?from=Lausanne&to=Gen%C3%A8ve");
+        new NetworkAsyncTask(this).execute("http://localhost:80/devweb/stage_velo77/backend/api/item/list.php");
     }
 
     @Override
