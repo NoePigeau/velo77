@@ -33,7 +33,8 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
     }
 
     private void executeHttpRequest(){
-        new NetworkAsyncTask(this).execute("https://ghibliapi.herokuapp.com/films");
+        //new NetworkAsyncTask(this).execute("https://ghibliapi.herokuapp.com/films");
+        new NetworkAsyncTask(this).execute("http://10.0.2.2/velo77/backend/api/item/list.php");
     }
 
     @Override
@@ -69,10 +70,10 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
     private void addBike( String response ) throws JSONException {
 
          JSONArray json = new JSONArray( response );
-         /*this.textView.setText(json.getJSONObject(0).getString("title"));*/
+         //this.textView.setText(json.toString());
 
-        for( int i = 0 ; i < 10 ; i++) {
-            this.result.add( new Item(json.getJSONObject(i).getString("id"), json.getJSONObject(i).getString("title") ) );
+        for( int i = 0 ; i < 3 ; i++) {
+            this.result.add( new Item(json.getJSONObject(i).getString("id"), json.getJSONObject(i).getString("name") ) );
         }
 
     }
