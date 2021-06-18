@@ -2,6 +2,8 @@ package com.example.velo77;
 
 import android.util.Log;
 
+import org.json.JSONException;
+
 import java.lang.ref.WeakReference;
 
 public class NetworkAsyncTask extends android.os.AsyncTask<String, Void, String> {
@@ -9,7 +11,7 @@ public class NetworkAsyncTask extends android.os.AsyncTask<String, Void, String>
     public interface Listeners {
         void onPreExecute();
         void doInBackground();
-        void onPostExecute(String success);
+        void onPostExecute(String success) throws JSONException;
     }
 
     private final WeakReference<Listeners> callback;
@@ -28,7 +30,11 @@ public class NetworkAsyncTask extends android.os.AsyncTask<String, Void, String>
     @Override
     protected void onPostExecute(String success) {
         super.onPostExecute(success);
-        this.callback.get().onPostExecute(success);
+        try {
+            this.callback.get().onPostExecute(success);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         Log.e("TAG", "AsyncTask is finished.");
     }
 

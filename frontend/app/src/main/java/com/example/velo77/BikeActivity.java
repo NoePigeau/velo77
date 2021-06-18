@@ -1,14 +1,23 @@
 package com.example.velo77;
 
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.Listeners  {
 
     private TextView textView;
+    private ListView widget;
+    List<Item> result = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +33,7 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
     }
 
     private void executeHttpRequest(){
-        new NetworkAsyncTask(this).execute("http://transport.opendata.ch/v1/connections?from=Lausanne&to=Gen%C3%A8ve");
+        new NetworkAsyncTask(this).execute("https://ghibliapi.herokuapp.com/films");
     }
 
     @Override
@@ -36,7 +45,7 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
     public void doInBackground() { }
 
     @Override
-    public void onPostExecute(String json) {
+    public void onPostExecute(String json) throws JSONException {
         this.updateUIWhenStopingHTTPRequest(json);
     }
 
@@ -45,11 +54,27 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
     // ------------------
 
     private void updateUIWhenStartingHTTPRequest(){
-        this.textView.setText("Downloading...");
+
     }
 
-    private void updateUIWhenStopingHTTPRequest(String response){
-        this.textView.setText(response);
+    private void updateUIWhenStopingHTTPRequest(String response) throws JSONException {
+        this.addBike(response);
+        this.widget = findViewById(R.id.allCards);
+        ItemAdapter adapter = new ItemAdapter( BikeActivity.this , this.result);
+        this.widget.setAdapter(adapter);
+
+
+    }
+
+    private void addBike( String response ) throws JSONException {
+
+         JSONArray json = new JSONArray( response );
+         /*this.textView.setText(json.getJSONObject(0).getString("title"));*/
+
+        for( int i = 0 ; i < 10 ; i++) {
+            this.result.add( new Item(json.getJSONObject(i).getString("id"), json.getJSONObject(i).getString("title") ) );
+        }
+
     }
 
 
