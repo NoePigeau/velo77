@@ -1,8 +1,10 @@
 package com.example.velo77;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,26 +17,39 @@ import java.util.List;
 
 public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.Listeners  {
 
-    private TextView textView;
     private ListView widget;
-    List<Item> result = new ArrayList<>();
+    private List<Item> result = new ArrayList<>();
+    public EditText edt_bike;
+    private Button btn_search;
+
+    public String bike_name = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bike);
 
+        this.edt_bike = findViewById(R.id.edt_bike);
+        this.btn_search =findViewById(R.id.btn_search);
 
-        this.textView = findViewById(R.id.welcome);
+        executeHttpRequest();
 
-        this.executeHttpRequest();
+        this.btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                bike_name = edt_bike.getText().toString();
+                result.clear();
+                executeHttpRequest();
 
 
-    }
+            }
+        });
 
-    private void executeHttpRequest(){
-        //new NetworkAsyncTask(this).execute("https://ghibliapi.herokuapp.com/films");
-        new NetworkAsyncTask(this).execute("http://10.0.2.2/velo77/backend/api/item/list.php");
+
+
+
     }
 
     @Override
@@ -69,14 +84,23 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
 
     private void addBike( String response ) throws JSONException {
 
-         JSONArray json = new JSONArray( response );
-         //this.textView.setText(json.toString());
+        JSONArray json = new JSONArray( response );
+        //this.textView.setText(json.toString());
 
-        for( int i = 0 ; i < 3 ; i++) {
+        for( int i = 0 ; i < json.length() ; i++) {
             this.result.add( new Item(json.getJSONObject(i).getString("id"), json.getJSONObject(i).getString("name") ) );
         }
 
     }
+
+    public void executeHttpRequest(){
+        String url = "http://10.0.2.2/velo77/backend/api/item/list.php?name=" + bike_name;
+        //String url = "https://ghibliapi.herokuapp.com/" + bike_name;
+
+        new NetworkAsyncTask(this).execute(url);
+    }
+
+
 
 
 
