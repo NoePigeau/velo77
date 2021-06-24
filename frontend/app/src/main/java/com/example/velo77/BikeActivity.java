@@ -1,19 +1,34 @@
 package com.example.velo77;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
+
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+import androidx.appcompat.widget.ButtonBarLayout;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.ui.AppBarConfiguration;
+
+import com.example.velo77.ui.home.HomeFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.jetbrains.annotations.NotNull;
 
 public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.Listeners  {
 
@@ -99,10 +114,5 @@ public class BikeActivity extends AppCompatActivity implements NetworkAsyncTask.
 
         new NetworkAsyncTask(this).execute(url);
     }
-
-
-
-
-
 
 }

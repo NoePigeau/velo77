@@ -6,13 +6,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_velo77"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_velo77_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Velo77"
+        android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity" />

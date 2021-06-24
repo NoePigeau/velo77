@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 }catch (Exception e){
 
-                    responseText.setText(" url exeption! " );
+                    //responseText.setText(" url exeption! " );
 
                 }
                 /*Intent i = new Intent( LoginActivity.this , HomeActivity.class);
