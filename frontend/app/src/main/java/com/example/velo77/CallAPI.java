@@ -3,10 +3,7 @@ package com.example.velo77;
 import android.os.AsyncTask;
 
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -32,6 +29,7 @@ public class CallAPI extends AsyncTask<String, String, String> {
         try {
             URL url = new URL(urlString);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("POST");
             out = new BufferedOutputStream(urlConnection.getOutputStream());
 
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
@@ -42,7 +40,9 @@ public class CallAPI extends AsyncTask<String, String, String> {
 
 
             urlConnection.connect();
-            StringBuilder stringBuilder = new StringBuilder();
+
+            String responseCode = "Code: " + urlConnection.getResponseCode();
+            /*StringBuilder stringBuilder = new StringBuilder();
             InputStream in = urlConnection.getInputStream();
             // 3 - Download and decode the string response
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -51,7 +51,8 @@ public class CallAPI extends AsyncTask<String, String, String> {
                 stringBuilder.append(line);
             }
 
-            return stringBuilder.toString();
+            return stringBuilder.toString();*/
+            return responseCode;
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
