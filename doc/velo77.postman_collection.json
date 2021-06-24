@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "5f44d261-51fa-44c6-b9b5-f93dbe4c8dd4",
+		"name": "velo77",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"firstname\" : \"bg\",\r\n \"lastname\" : \"de la street\",\r\n \"email\" : \"email\",\r\n \"password\" : \"1234\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}/{{PATH}}/api/user/create.php",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"{{PATH}}",
+								"api",
+								"user",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\" : \"email\",\r\n \"password\" : \"1234\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}/{{PATH}}/api/user/login.php",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"{{PATH}}",
+								"api",
+								"user",
+								"login.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testLogged",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}/{{PATH}}/api/user/testlog.php",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"{{PATH}}",
+								"api",
+								"user",
+								"testlog.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}/{{PATH}}/utils/test.php",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"{{PATH}}",
+								"utils",
+								"test.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "item",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"tarmac\",\r\n    \"description\" : \"ce velo est fait pour la competetion insane !!\",\r\n    \"price\" : 6000.5,\r\n    \"size\" : \"XS,S,M,L\",\r\n    \"collection\" : \"men\",\r\n    \"series\" : \"route\",\r\n    \"type\" : \"normal\",\r\n    \"brand\" : \"specialized\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}/{{PATH}}/api/item/create.php",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"{{PATH}}",
+								"api",
+								"item",
+								"create.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}/{{PATH}}/api/item/list.php?collection=men",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"{{PATH}}",
+								"api",
+								"item",
+								"list.php"
+							],
+							"query": [
+								{
+									"key": "collection",
+									"value": "men"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
