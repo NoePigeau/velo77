@@ -61,11 +61,11 @@ public class LoginActivity extends AppCompatActivity {
         data += "&" + URLEncoder.encode("password", "UTF-8") + "="
                 + URLEncoder.encode(pwd, "UTF-8");
 
-        String[] array = {"http://10.0.2.2/velo77/backend/api/user/login.php" , data};
+        String url = "http://10.0.2.2/velo77/backend/api/user/login.php";
 
         CallAPI api = new CallAPI();
 
-        String result = api.doInBackground(array);
+        String result = api.doInBackground(url);
         //JSONArray json = new JSONArray(result);
         responseText.setText(result);
 

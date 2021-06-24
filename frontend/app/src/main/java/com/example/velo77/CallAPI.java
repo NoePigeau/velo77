@@ -2,7 +2,6 @@ package com.example.velo77;
 
 import android.os.AsyncTask;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -29,21 +28,17 @@ public class CallAPI extends AsyncTask<String, String, String> {
 
 
         try {
-            URL url = new URL(urlString);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("POST");
-            out = new BufferedOutputStream(urlConnection.getOutputStream());
-
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-            writer.write(data);
+            URL url = new URL(params[0]);
+            HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+            httpURLConnection.setRequestMethod("POST");//important
+            httpURLConnection.connect();
+            //write data to the server using BufferedWriter
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(httpURLConnection
+                    .getOutputStream()));
+            writer.write("email=email&password=1234");
             writer.flush();
-            writer.close();
-            out.close();
 
-
-            urlConnection.connect();
-
-            String responseCode = "Code: " + urlConnection.getResponseCode();
+            String responseCode = "Code: " + httpURLConnection.getResponseCode();
             /*StringBuilder stringBuilder = new StringBuilder();
             InputStream in = urlConnection.getInputStream();
             // 3 - Download and decode the string response
