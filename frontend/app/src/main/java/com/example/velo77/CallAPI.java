@@ -26,6 +26,8 @@ public class CallAPI extends AsyncTask<String, String, String> {
         String data = params[1]; //data to post
         OutputStream out = null;
 
+
+
         try {
             URL url = new URL(urlString);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
