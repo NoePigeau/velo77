@@ -9,9 +9,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,42 +40,101 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                JSONObject login = new JSONObject();
                 try {
-                    getInputs();
+                    login.put("email", edtEmail.getText().toString());
+                    login.put("password", edtPwd.getText().toString());
 
-                }catch (Exception e){
-
-                    //responseText.setText(" url exeption! " );
-
+                }catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                /*Intent i = new Intent( LoginActivity.this , HomeActivity.class);
-                startActivity(i);*/
+
+
             }
         });
     }
 
+        public  void  getInputs()  throws UnsupportedEncodingException {
+            // Get user defined values
+            email = edtEmail.getText().toString();
+            pwd   = edtPwd.getText().toString();
 
-    public void getInputs() throws UnsupportedEncodingException, JSONException {
+            JSONObject data = new JSONObject();
+            try {
+                data.put("email", edtEmail.getText().toString());
+                data.put("password", edtPwd.getText().toString());
 
-        email = edtEmail.getText().toString();
-        pwd = edtPwd.getText().toString();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-        String data = URLEncoder.encode("email", "UTF-8")
-                + "=" + URLEncoder.encode(email, "UTF-8");
 
-        data += "&" + URLEncoder.encode("password", "UTF-8") + "="
-                + URLEncoder.encode(pwd, "UTF-8");
 
-        String url = "http://10.0.2.2/velo77/backend/api/user/login.php";
+            // Create data variable for sent values to server
 
-        CallAPI api = new CallAPI();
+            /*String data = URLEncoder.encode("email", "UTF-8")
+                    + "=" + URLEncoder.encode(email, "UTF-8");
 
-        String result = api.doInBackground(url);
-        //JSONArray json = new JSONArray(result);
-        responseText.setText(result);
+            data += "&" + URLEncoder.encode("password", "UTF-8") + "="
+                    + URLEncoder.encode(pwd, "UTF-8");*/
 
-        //responseText.setText(json.toString());
+
+            String text = "";
+            BufferedReader reader=null;
+
+            // Send data
+            try
+            {
+
+                // Defined URL  where to send data
+                URL url = new URL("http://10.0.2.2/velo77/backend/api/user/login.php");
+
+                // Send POST data request
+
+                URLConnection conn = url.openConnection();
+                conn.setDoOutput(true);
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+                wr.write( data.toString() );
+                wr.flush();
+
+                // Get the server response
+
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                // Read Server Response
+                while((line = reader.readLine()) != null)
+                {
+                    // Append server response in string
+                    sb.append(line + "\n");
+                }
+
+
+                text = sb.toString();
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                try
+                {
+
+                    reader.close();
+                }
+
+                catch(Exception ex) {}
+            }
+
+            // Show response on activity
+            responseText.setText( text  );
+
+        }
 
     }
 
-}
+
+
+
