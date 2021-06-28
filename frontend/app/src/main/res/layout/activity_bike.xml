@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_container"
+    android:layout_above="@id/bottom_navigation"
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".HomeActivity"
@@ -83,17 +85,22 @@
     </LinearLayout>
 
 
+    <ListView
+
+        android:id="@+id/allCards"
+        android:layout_width="match_parent"
+        android:layout_height="322dp">
 
 
-        <ListView
+    </ListView>
 
-            android:id="@+id/allCards"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-        </ListView>
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/bottom_navigation" />
 
 </LinearLayout>
 
