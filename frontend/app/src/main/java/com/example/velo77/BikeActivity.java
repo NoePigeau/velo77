@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.velo77.obj.Item;
 import com.example.velo77.obj.ItemAdapter;
 import com.example.velo77.request.BikesAsyncTask;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,7 +52,7 @@ public class BikeActivity extends AppCompatActivity implements BikesAsyncTask.Li
             public boolean onNavigationItemSelected(@NonNull MenuItem MenuItem) {
                 switch (MenuItem.getItemId()){
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),BikeActivity.class));
+                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_search:
