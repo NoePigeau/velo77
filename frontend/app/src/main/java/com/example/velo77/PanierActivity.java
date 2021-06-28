@@ -37,11 +37,11 @@ public class PanierActivity extends AppCompatActivity  {
             public boolean onNavigationItemSelected(@NonNull MenuItem MenuItem) {
                 switch (MenuItem.getItemId()) {
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(), BikeActivity.class));
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_search:
-                        startActivity(new Intent(getApplicationContext(), PanierActivity.class));
+                        startActivity(new Intent(getApplicationContext(), BikeActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_store:
