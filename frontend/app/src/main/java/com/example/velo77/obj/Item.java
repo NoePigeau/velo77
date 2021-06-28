@@ -1,4 +1,4 @@
-package com.example.velo77;
+package com.example.velo77.obj;
 
 public class Item {
 

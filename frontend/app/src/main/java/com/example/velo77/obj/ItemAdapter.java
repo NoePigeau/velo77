@@ -1,4 +1,4 @@
-package com.example.velo77;
+package com.example.velo77.obj;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.velo77.R;
 
 import java.util.List;
 

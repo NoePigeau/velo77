@@ -1,4 +1,4 @@
-package com.example.velo77;
+package com.example.velo77.request;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MyHttpURLConnection {
+public class BikesURLConnection {
 
     public static String startHttpRequest(String urlString){
 
