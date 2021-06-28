@@ -55,6 +55,7 @@ public class ItemAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent( context , BikeDetailActivity.class);
+                i.putExtra("idItem", current.getId());
                 context.startActivity(i);
             }
         });

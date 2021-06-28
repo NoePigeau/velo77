@@ -45,129 +45,135 @@
     </LinearLayout>
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10sp">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="209dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/transparent" />
-
-        <TextView
-            android:id="@+id/name_bike"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_gravity="left"
-            android:text="Nom du Vélo"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/price_bike"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_gravity="left"
-            android:text="500 EUR"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="10sp">
 
-            <Button
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="209dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/transparent" />
 
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:text="XS"
-                android:textColor="#7CCB31"
+            <TextView
+                android:id="@+id/name_bike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:layout_gravity="left"
+                android:text="Nom du Vélo"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
 
-                app:backgroundTint="#FFFFFF"
-                app:strokeWidth="2dp"
-                app:strokeColor="#7CCB31"/>
+            <TextView
+                android:id="@+id/price_bike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_gravity="left"
+                android:text="500 EUR"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10sp">
+
+                <Button
+
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:text="XS"
+                    android:textColor="#7CCB31"
+                    android:layout_margin="10dp"
+
+                    app:backgroundTint="#FFFFFF"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="#7CCB31"/>
+
+                <Button
+
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:text="S"
+                    android:textColor="#7CCB31"
+                    android:layout_margin="10dp"
+
+                    app:backgroundTint="#FFFFFF"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="#7CCB31"/>
+
+
+                <Button
+
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:text="M"
+                    android:textColor="#7CCB31"
+                    android:layout_margin="10dp"
+
+                    app:backgroundTint="#FFFFFF"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="#7CCB31"/>
+
+                <Button
+
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:text="L"
+                    android:textColor="#7CCB31"
+                    android:layout_margin="10dp"
+
+                    app:backgroundTint="#FFFFFF"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="#7CCB31"/>
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_gravity="left"
+                android:text="Description: cette partie est l description du velo ma boii !!"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
 
             <Button
+                android:id="@+id/btn_login"
+                android:layout_width="285dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center"
 
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:text="S"
-                android:textColor="#7CCB31"
                 android:layout_margin="10dp"
-
-                app:backgroundTint="#FFFFFF"
-                app:strokeWidth="2dp"
-                app:strokeColor="#7CCB31"/>
-
-
-            <Button
-
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:text="M"
-                android:textColor="#7CCB31"
-                android:layout_margin="10dp"
-
-                app:backgroundTint="#FFFFFF"
-                app:strokeWidth="2dp"
-                app:strokeColor="#7CCB31"/>
-
-            <Button
-
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:text="L"
-                android:textColor="#7CCB31"
-                android:layout_margin="10dp"
-
-                app:backgroundTint="#FFFFFF"
-                app:strokeWidth="2dp"
-                app:strokeColor="#7CCB31"/>
+                android:padding="15dp"
+                android:text="ajouter au panier"
+                android:typeface="sans"
+                app:backgroundTint="#7CCB31"
+                app:cornerRadius="30dp" />
 
 
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_gravity="left"
-            android:text="Description: cette partie est l description du velo ma boii !!"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="285dp"
-            android:layout_height="74dp"
-            android:layout_gravity="center"
-
-            android:layout_margin="10dp"
-            android:padding="15dp"
-            android:text="ajouter au panier"
-            android:typeface="sans"
-            app:backgroundTint="#7CCB31"
-            app:cornerRadius="30dp" />
-
-
-
-    </LinearLayout>
 
 
 
 
+    </ScrollView>
 
 
 
