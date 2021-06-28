@@ -19,6 +19,7 @@
         <activity android:name=".BikeActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".PanierActivity" />
+        <activity android:name=".BikeDetailActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

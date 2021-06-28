@@ -132,7 +132,7 @@ public class BikeActivity extends AppCompatActivity implements BikesAsyncTask.Li
 
     public void executeHttpRequest(){
         //String url = "http://10.0.2.2/velo77/backend/api/item/list.php?name=" + bike_name;
-        String url = "https://ghibliapi.herokuapp.com/" + bike_name;
+        String url = "https://ghibliapi.herokuapp.com/films" + bike_name;
 
         new BikesAsyncTask(this).execute(url);
     }

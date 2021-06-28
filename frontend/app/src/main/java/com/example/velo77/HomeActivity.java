@@ -1,7 +1,6 @@
 package com.example.velo77;
 
 import android.content.Intent;
-import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,14 +8,8 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ButtonBarLayout;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.ui.AppBarConfiguration;
 
-import com.example.velo77.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import org.jetbrains.annotations.NotNull;
 
 public class HomeActivity extends AppCompatActivity {
     private Button bikes;
