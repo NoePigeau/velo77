@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.velo77.obj.Item;
 import com.example.velo77.obj.ItemAdapter;
 import com.example.velo77.request.BikesAsyncTask;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -131,7 +132,7 @@ public class BikeActivity extends AppCompatActivity implements BikesAsyncTask.Li
 
     public void executeHttpRequest(){
         //String url = "http://10.0.2.2/velo77/backend/api/item/list.php?name=" + bike_name;
-        String url = "https://ghibliapi.herokuapp.com/" + bike_name;
+        String url = "https://ghibliapi.herokuapp.com/films" + bike_name;
 
         new BikesAsyncTask(this).execute(url);
     }
