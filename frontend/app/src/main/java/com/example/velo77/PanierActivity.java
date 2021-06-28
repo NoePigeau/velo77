@@ -18,50 +18,41 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
-public class HomeActivity extends AppCompatActivity {
-    private Button bikes;
+public class PanierActivity extends AppCompatActivity  {
+
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_panier);
 
-        this.bikes = findViewById(R.id.btn_bikes);
-        this.bikes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent( HomeActivity.this , BikeActivity.class);
-                startActivity(i);
-            }
-        });
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+        bottomNavigationView.setSelectedItemId(R.id.nav_shop);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem MenuItem) {
-                switch (MenuItem.getItemId()){
+                switch (MenuItem.getItemId()) {
                     case R.id.nav_home:
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_search:
-                        startActivity(new Intent(getApplicationContext(),BikeActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), BikeActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_store:
-                        startActivity(new Intent(getApplicationContext(),BikeActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), BikeActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.nav_shop:
-                        startActivity(new Intent(getApplicationContext(),PanierActivity.class));
-                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
             }
         });
-
     }
-
 }

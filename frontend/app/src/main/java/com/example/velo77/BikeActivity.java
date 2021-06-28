@@ -1,11 +1,14 @@
 package com.example.velo77;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.velo77.obj.Item;
@@ -28,6 +31,7 @@ public class BikeActivity extends AppCompatActivity implements BikesAsyncTask.Li
     private Button btn_search;
 
     public String bike_name = "";
+    BottomNavigationView bottomNavigationView;
 
 
     @Override
@@ -37,6 +41,33 @@ public class BikeActivity extends AppCompatActivity implements BikesAsyncTask.Li
 
         this.edt_bike = findViewById(R.id.edt_bike);
         this.btn_search =findViewById(R.id.btn_search);
+
+        bottomNavigationView  = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setSelectedItemId(R.id.nav_search);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem MenuItem) {
+                switch (MenuItem.getItemId()){
+                    case R.id.nav_home:
+                        startActivity(new Intent(getApplicationContext(),BikeActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_search:
+                        return true;
+                    case R.id.nav_store:
+                        startActivity(new Intent(getApplicationContext(),BikeActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_shop:
+                        startActivity(new Intent(getApplicationContext(),PanierActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
         executeHttpRequest();
 
@@ -104,5 +135,6 @@ public class BikeActivity extends AppCompatActivity implements BikesAsyncTask.Li
 
         new BikesAsyncTask(this).execute(url);
     }
+
 
 }
