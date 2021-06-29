@@ -3,10 +3,14 @@ package com.example.velo77.request;
 import android.util.Log;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 
-public class BikesAsyncTask extends android.os.AsyncTask<String, Void, String> {
+public class LoginAsyncTask extends android.os.AsyncTask<String, Void, String> {
+
+    private JSONObject inputs;
 
     public interface Listeners {
         void onPreExecute();
@@ -16,15 +20,16 @@ public class BikesAsyncTask extends android.os.AsyncTask<String, Void, String> {
 
     private final WeakReference<Listeners> callback;
 
-    public BikesAsyncTask(Listeners callback){
+    public LoginAsyncTask(Listeners callback, JSONObject inputs){
         this.callback = new WeakReference<>(callback);
+        this.inputs = inputs;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
         this.callback.get().onPreExecute();
-        Log.e("TAG", "BikeAsyncTask is started.");
+        Log.e("TAG", "LoginAsyncTask is started.");
     }
 
     @Override
@@ -42,6 +47,14 @@ public class BikesAsyncTask extends android.os.AsyncTask<String, Void, String> {
     protected String doInBackground(String... url) {
         this.callback.get().doInBackground();
         Log.e("TAG", "AsyncTask doing some big work...");
-        return BikesURLConnection.startHttpRequest(url[0]);
+
+        try {
+            return LoginURLConnection.startHttpRequest(url[0], this.inputs);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
+
 }

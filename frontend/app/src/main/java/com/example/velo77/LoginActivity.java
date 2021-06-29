@@ -8,21 +8,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.velo77.request.LoginAsyncTask;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLConnection;
-
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginAsyncTask.Listeners {
 
     private Button btnLogin;
     private EditText edtEmail, edtPwd;
-    private String email, pwd;
     private TextView responseText;
 
     @Override
@@ -40,100 +35,64 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                JSONObject login = new JSONObject();
-                try {
-                    login.put("email", edtEmail.getText().toString());
-                    login.put("password", edtPwd.getText().toString());
 
-                }catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
+                executeHttpRequest();
 
             }
         });
     }
 
-        public  void  getInputs()  throws UnsupportedEncodingException {
-            // Get user defined values
-            email = edtEmail.getText().toString();
-            pwd   = edtPwd.getText().toString();
+        public  void  responseLogin(String response) throws JSONException {
 
-            JSONObject data = new JSONObject();
-            try {
-                data.put("email", edtEmail.getText().toString());
-                data.put("password", edtPwd.getText().toString());
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-
-            // Create data variable for sent values to server
-
-            /*String data = URLEncoder.encode("email", "UTF-8")
-                    + "=" + URLEncoder.encode(email, "UTF-8");
-
-            data += "&" + URLEncoder.encode("password", "UTF-8") + "="
-                    + URLEncoder.encode(pwd, "UTF-8");*/
-
-
-            String text = "";
-            BufferedReader reader=null;
-
-            // Send data
-            try
-            {
-
-                // Defined URL  where to send data
-                URL url = new URL("http://10.0.2.2/velo77/backend/api/user/login.php");
-
-                // Send POST data request
-
-                URLConnection conn = url.openConnection();
-                conn.setDoOutput(true);
-                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                wr.write( data.toString() );
-                wr.flush();
-
-                // Get the server response
-
-                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-
-                // Read Server Response
-                while((line = reader.readLine()) != null)
-                {
-                    // Append server response in string
-                    sb.append(line + "\n");
-                }
-
-
-                text = sb.toString();
-            }
-            catch(Exception ex)
-            {
-
-            }
-            finally
-            {
-                try
-                {
-
-                    reader.close();
-                }
-
-                catch(Exception ex) {}
-            }
-
-            // Show response on activity
-            responseText.setText( text  );
+            JSONArray json = new JSONArray( response );
+            this.responseText.setText(json.toString());
 
         }
 
+    @Override
+    public void onPreExecute() {
+        this.updateUIWhenStartingHTTPRequest();
     }
+
+    @Override
+    public void doInBackground() { }
+
+    @Override
+    public void onPostExecute(String json) throws JSONException {
+        this.updateUIWhenStopingHTTPRequest(json);
+    }
+
+    // ------------------
+    //  UPDATE UI
+    // ------------------
+
+    private void updateUIWhenStartingHTTPRequest(){
+        this.responseText.setText("wait a sec ... ");
+
+    }
+
+    private void updateUIWhenStopingHTTPRequest(String response) throws JSONException {
+        responseLogin(response);
+
+    }
+
+    public void executeHttpRequest(){
+        String url = "http://10.0.2.2/velo77/backend/api/user/login.php";
+        //String url = "https://ghibliapi.herokuapp.com/films";
+
+        JSONObject inputs = new JSONObject();
+        try {
+            inputs.put("email", edtEmail.getText().toString());
+            inputs.put("password", edtPwd.getText().toString());
+
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        new LoginAsyncTask(this, inputs).execute(url);
+    }
+
+}
 
 
 
