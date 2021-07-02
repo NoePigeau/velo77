@@ -32,7 +32,7 @@ public class PostURLConnection {
             if(responseCode == 500) return "500";
             if(responseCode == 409) return "409";
 
-            if(responseCode == 200 || responseCode == 201){//if valid, read result from server
+            if(responseCode == 200){//if valid, read result from server
                 BufferedReader reader = new BufferedReader(new InputStreamReader
                         (httpURLConnection.getInputStream()));
                 String line;
@@ -41,6 +41,9 @@ public class PostURLConnection {
                     stringBuilder.append(line);
                 }
                 return stringBuilder.toString();
+            }
+            if(  responseCode == 201 ){
+                return "201";
             }
 
         } catch (MalformedURLException exception){
