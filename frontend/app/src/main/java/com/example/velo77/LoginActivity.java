@@ -43,18 +43,20 @@ public class LoginActivity extends AppCompatActivity implements PostAsyncTask.Li
     }
 
         public  void  responseLogin(String response) throws JSONException {
-            if(response != null){
-                JSONObject json = new JSONObject( response );
-                this.responseText.setText(json.getString("token"));
 
-                Intent i = new Intent(this, HomeActivity.class);
-                i.putExtra("token", json.getString("token"));
-                startActivity(i);
-            }else {
-                this.responseText.setText("Identifiants incorrectes !");
+            switch (response){
+                case "500": this.responseText.setText("Erreur lors de la connection !");
+                    break;
+                case "404": this.responseText.setText("Identifiants incorrectes !");
+                    break;
+                default:
+                    JSONObject json = new JSONObject( response );
+                    this.responseText.setText(json.getString("token"));
+
+                    Intent i = new Intent(this, HomeActivity.class);
+                    i.putExtra("token", json.getString("token"));
+                    startActivity(i);
             }
-
-
         }
 
     @Override

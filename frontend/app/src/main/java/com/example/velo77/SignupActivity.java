@@ -42,7 +42,7 @@ public class SignupActivity extends AppCompatActivity implements PostAsyncTask.L
         });
     }
 
-    public  void  responseSignup(String response) throws JSONException {
+    public  void  responseSignup(String response)  {
 
         switch (response){
             case "500": this.responseText.setText("Erreur lors de l'inscription !");
