@@ -37,6 +37,7 @@ public class SignupActivity extends AppCompatActivity implements PostAsyncTask.L
         this.signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                executeHttpRequest();
 
             }
         });
