@@ -98,6 +98,15 @@
             app:backgroundTint="#7CCB31"
             app:cornerRadius="30dp" />
 
+        <TextView
+            android:id="@+id/response_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:text="statut"
+            android:gravity="center_horizontal" />
+
     </LinearLayout>
 
 

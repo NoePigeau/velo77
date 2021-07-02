@@ -11,7 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class LoginURLConnection {
+public class PostURLConnection {
 
     public static String startHttpRequest(String urlString, JSONObject inputs) throws IOException {
         try {
@@ -26,7 +26,13 @@ public class LoginURLConnection {
             writer.flush();
             //get response code and check if valid (HTTP OK)
             int responseCode = httpURLConnection.getResponseCode();
-            if(responseCode == 200){//if valid, read result from server
+
+            if(responseCode == 400) return "400";
+            if(responseCode == 404) return "404";
+            if(responseCode == 500) return "500";
+            if(responseCode == 409) return "409";
+
+            if(responseCode == 200 || responseCode == 201){//if valid, read result from server
                 BufferedReader reader = new BufferedReader(new InputStreamReader
                         (httpURLConnection.getInputStream()));
                 String line;
@@ -44,7 +50,7 @@ public class LoginURLConnection {
         } catch (Exception e){
 
         }
-        return null;
+        return "500";
 
     }
 

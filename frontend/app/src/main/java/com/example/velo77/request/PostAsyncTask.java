@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
-public class LoginAsyncTask extends android.os.AsyncTask<String, Void, String> {
+public class PostAsyncTask extends android.os.AsyncTask<String, Void, String> {
 
     private JSONObject inputs;
 
@@ -20,7 +20,7 @@ public class LoginAsyncTask extends android.os.AsyncTask<String, Void, String> {
 
     private final WeakReference<Listeners> callback;
 
-    public LoginAsyncTask(Listeners callback, JSONObject inputs){
+    public PostAsyncTask(Listeners callback, JSONObject inputs){
         this.callback = new WeakReference<>(callback);
         this.inputs = inputs;
     }
@@ -49,7 +49,7 @@ public class LoginAsyncTask extends android.os.AsyncTask<String, Void, String> {
         Log.e("TAG", "AsyncTask doing some big work...");
 
         try {
-            return LoginURLConnection.startHttpRequest(url[0], this.inputs);
+            return PostURLConnection.startHttpRequest(url[0], this.inputs);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

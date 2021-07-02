@@ -6,7 +6,7 @@ import org.json.JSONException;
 
 import java.lang.ref.WeakReference;
 
-public class BikesAsyncTask extends android.os.AsyncTask<String, Void, String> {
+public class GetAsyncTask extends android.os.AsyncTask<String, Void, String> {
 
     public interface Listeners {
         void onPreExecute();
@@ -16,7 +16,7 @@ public class BikesAsyncTask extends android.os.AsyncTask<String, Void, String> {
 
     private final WeakReference<Listeners> callback;
 
-    public BikesAsyncTask(Listeners callback){
+    public GetAsyncTask(Listeners callback){
         this.callback = new WeakReference<>(callback);
     }
 
@@ -42,6 +42,6 @@ public class BikesAsyncTask extends android.os.AsyncTask<String, Void, String> {
     protected String doInBackground(String... url) {
         this.callback.get().doInBackground();
         Log.e("TAG", "AsyncTask doing some big work...");
-        return BikesURLConnection.startHttpRequest(url[0]);
+        return GetURLConnection.startHttpRequest(url[0]);
     }
 }

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.velo77.obj.Item;
 import com.example.velo77.obj.ItemAdapter;
-import com.example.velo77.request.BikesAsyncTask;
+import com.example.velo77.request.GetAsyncTask;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -24,7 +24,7 @@ import java.util.List;
 
 
 
-public class BikeActivity extends AppCompatActivity implements BikesAsyncTask.Listeners  {
+public class BikeActivity extends AppCompatActivity implements GetAsyncTask.Listeners  {
 
     private ListView widget;
     private List<Item> result = new ArrayList<>();
@@ -125,16 +125,25 @@ public class BikeActivity extends AppCompatActivity implements BikesAsyncTask.Li
         //this.textView.setText(json.toString());
 
         for( int i = 0 ; i < json.length() ; i++) {
-            this.result.add( new Item(json.getJSONObject(i).getString("id"), json.getJSONObject(i).getString("title") ) );
+            this.result.add( new Item(json.getJSONObject(i).getString("id"),
+                                      json.getJSONObject(i).getString("name"),
+                                      json.getJSONObject(i).getString("description"),
+                                      json.getJSONObject(i).getDouble("price"),
+                                      json.getJSONObject(i).getString("size"),
+                                      json.getJSONObject(i).getString("collection"),
+                                      json.getJSONObject(i).getString("gamme"),
+                                      json.getJSONObject(i).getString("brand"),
+                                      json.getJSONObject(i).getString("type")
+            ) );
         }
 
     }
 
     public void executeHttpRequest(){
-        //String url = "http://10.0.2.2/velo77/backend/api/item/list.php?name=" + bike_name;
-        String url = "https://ghibliapi.herokuapp.com/films" + bike_name;
+        String url = "http://10.0.2.2/velo77/backend/api/item/list.php?name=" + bike_name;
+        //String url = "https://ghibliapi.herokuapp.com/films" + bike_name;
 
-        new BikesAsyncTask(this).execute(url);
+        new GetAsyncTask(this).execute(url);
     }
 
 

@@ -10,7 +10,7 @@ $content = file_get_contents('php://input');
 $_POST = json_decode($content, true);
 
 $email = isset( $_POST['email']) ? htmlspecialchars( $_POST['email']) : null;
-$password = isset( $_POST['password']) ? $_POST['password'] : null;
+$password = isset( $_POST['password']) ? $_POST['p²assword'] : null;
 
 if($email && $password){
 

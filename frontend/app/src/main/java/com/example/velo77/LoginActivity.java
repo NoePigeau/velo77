@@ -1,5 +1,6 @@
 package com.example.velo77;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,13 +9,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.velo77.request.LoginAsyncTask;
+import com.example.velo77.request.PostAsyncTask;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity implements LoginAsyncTask.Listeners {
+public class LoginActivity extends AppCompatActivity implements PostAsyncTask.Listeners {
 
     private Button btnLogin;
     private EditText edtEmail, edtPwd;
@@ -43,9 +43,17 @@ public class LoginActivity extends AppCompatActivity implements LoginAsyncTask.L
     }
 
         public  void  responseLogin(String response) throws JSONException {
+            if(response != null){
+                JSONObject json = new JSONObject( response );
+                this.responseText.setText(json.getString("token"));
 
-            JSONArray json = new JSONArray( response );
-            this.responseText.setText(json.toString());
+                Intent i = new Intent(this, HomeActivity.class);
+                i.putExtra("token", json.getString("token"));
+                startActivity(i);
+            }else {
+                this.responseText.setText("Identifiants incorrectes !");
+            }
+
 
         }
 
@@ -89,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements LoginAsyncTask.L
             e.printStackTrace();
         }
 
-        new LoginAsyncTask(this, inputs).execute(url);
+        new PostAsyncTask(this, inputs).execute(url);
     }
 
 }

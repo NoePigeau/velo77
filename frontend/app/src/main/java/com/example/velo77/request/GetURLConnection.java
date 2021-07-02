@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class BikesURLConnection {
+public class GetURLConnection {
 
     public static String startHttpRequest(String urlString){
 
