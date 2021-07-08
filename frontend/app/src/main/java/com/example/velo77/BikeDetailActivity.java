@@ -3,10 +3,12 @@ package com.example.velo77;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +24,7 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
     private Item data;
     private TextView price, description, collection, brand, series, type;
     private Button btnPanier;
+    private SharedPreferences shp = getSharedPreferences("ID" , MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +103,12 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
 
 
 
+        Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+
+
+
+
+
     }
 
 
@@ -110,7 +119,7 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
 
         JSONObject json = new JSONObject();
         try {
-            json.put("idUser", getIntent().getStringExtra("idUser") );
+            json.put("idUser", shp.getString("idUser" , null) );
             json.put("idItem", this.data.getId());
 
         }catch (JSONException e) {

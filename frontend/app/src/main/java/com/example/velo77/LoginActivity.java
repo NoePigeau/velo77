@@ -1,6 +1,7 @@
 package com.example.velo77;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -54,8 +55,12 @@ public class LoginActivity extends AppCompatActivity implements PostAsyncTask.Li
                     this.responseText.setText(json.getString("token"));
 
                     Intent i = new Intent(this, HomeActivity.class);
-                    i.putExtra("token", json.getString("token"));
-                    i.putExtra("idUser", json.getString("idUser"));
+                    SharedPreferences shp = getSharedPreferences("ID" , MODE_PRIVATE);
+                    SharedPreferences.Editor edit = shp.edit();
+                    edit.putString("token" , json.getString("token"));
+                    edit.putString("idUser" , json.getString("idUser"));
+                    edit.apply();
+
                     startActivity(i);
             }
         }

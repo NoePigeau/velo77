@@ -114,7 +114,7 @@ public class BikeActivity extends AppCompatActivity implements GetAsyncTask.List
         this.addBike(response);
         this.widget = findViewById(R.id.allCards);
         ItemAdapter adapter = new ItemAdapter( BikeActivity.this , this.result);
-        adapter.updateImage();
+        //adapter.updateImage();
         this.widget.setAdapter(adapter);
 
 
