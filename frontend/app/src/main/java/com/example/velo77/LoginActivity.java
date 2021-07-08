@@ -1,6 +1,5 @@
 package com.example.velo77;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,7 +20,7 @@ public class LoginActivity extends AppCompatActivity implements PostAsyncTask.Li
     private Button btnLogin;
     private EditText edtEmail, edtPwd;
     private TextView responseText;
-    private SharedPreferences shp = this.getSharedPreferences("ID" , Context.MODE_PRIVATE);
+    private SharedPreferences shp = getSharedPreferences("ID" , MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
