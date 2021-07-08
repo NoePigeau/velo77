@@ -1,6 +1,7 @@
 package com.example.velo77;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,7 +25,7 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
     private Item data;
     private TextView price, description, collection, brand, series, type;
     private Button btnPanier;
-    private SharedPreferences shp = getSharedPreferences("ID" , MODE_PRIVATE);
+    private SharedPreferences shp = this.getSharedPreferences("ID" , Context.MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
