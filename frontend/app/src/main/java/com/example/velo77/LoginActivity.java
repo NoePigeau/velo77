@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements PostAsyncTask.Li
                     this.responseText.setText(json.getString("token"));
 
                     Intent i = new Intent(this, HomeActivity.class);
+                    shp.edit().clear();
                     shp.edit().putString("token" , json.getString("token"));
                     shp.edit().putString("idUser" , json.getString("idUser"));
                     shp.edit().apply();
