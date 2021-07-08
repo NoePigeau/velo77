@@ -10,7 +10,7 @@ $content = file_get_contents('php://input');
 $_POST = json_decode($content, true);
 
 $email = isset( $_POST['email']) ? htmlspecialchars( $_POST['email']) : null;
-$password = isset( $_POST['password']) ? $_POST['p²assword'] : null;
+$password = isset( $_POST['password']) ? $_POST['password'] : null;
 
 if($email && $password){
 
@@ -23,7 +23,8 @@ if($email && $password){
     $token = sessionInsert( $idUser['idUser'] );
     header("Content-Type: application/json");
     echo json_encode([
-        "token" => $token
+        "token" => $token,
+        "idUser" => $idUser['idUser']
     ]);
 
 }else http_response_code(400);

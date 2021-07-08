@@ -64,6 +64,15 @@
         android:textColor="@color/black"
         android:textSize="30dp" />
 
+    <ListView
+
+        android:id="@+id/allCards"
+        android:layout_width="match_parent"
+        android:layout_height="322dp">
+
+
+    </ListView>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

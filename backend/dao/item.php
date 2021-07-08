@@ -109,3 +109,38 @@ function getItemByName(string $name): ?array {
     $params = [$name];
     return databaseFindOne($connection, $sql, $params);
 }
+
+function imgInsert( array $img , int $idUser){
+
+    $acceptable = [
+		'image/jpeg',
+		'image/jpg',
+		'image/png'
+	];
+
+	if(!in_array($img['type'], $acceptable) ) 
+	{
+		return false;
+	}
+
+    $maxsize = 1024*1024; // limite du fichier à 1Mo
+
+    if($img['size'] > $maxsize)
+    {
+
+       return false;
+
+    }
+
+    $filename = $img['name']; 
+	$temp = explode('.', $filename);
+	$extension = end($temp);
+
+    $path =  "../../img-item/item_" . $idUser . "." . $extension;
+
+    move_uploaded_file($img['tmp_name'], $path);
+
+    return true;
+
+
+}

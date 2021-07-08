@@ -1,26 +1,29 @@
 package com.example.velo77;
 
 import android.content.Intent;
-import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ButtonBarLayout;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.ui.AppBarConfiguration;
 
-import com.example.velo77.ui.home.HomeFragment;
+import com.example.velo77.obj.Item;
+import com.example.velo77.obj.ItemAdapter;
+import com.example.velo77.request.GetAsyncTask;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
 
-public class PanierActivity extends AppCompatActivity  {
+import java.util.ArrayList;
+import java.util.List;
+
+public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Listeners  {
 
     BottomNavigationView bottomNavigationView;
+    private ListView widget;
+    private List<Item> result = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,4 +58,62 @@ public class PanierActivity extends AppCompatActivity  {
             }
         });
     }
+
+    @Override
+    public void onPreExecute() {
+        this.updateUIWhenStartingHTTPRequest();
+    }
+
+    @Override
+    public void doInBackground() { }
+
+    @Override
+    public void onPostExecute(String json) throws JSONException {
+        this.updateUIWhenStopingHTTPRequest(json);
+    }
+
+    private void updateUIWhenStartingHTTPRequest(){
+
+    }
+
+    private void updateUIWhenStopingHTTPRequest(String response) throws JSONException {
+        this.addBike(response);
+        this.widget = findViewById(R.id.allCards);
+        ItemAdapter adapter = new ItemAdapter( PanierActivity.this , this.result);
+        adapter.updateImage();
+        this.widget.setAdapter(adapter);
+
+
+    }
+
+    private void addBike( String response ) throws JSONException {
+
+        JSONArray json = new JSONArray( response );
+        //this.textView.setText(json.toString());
+
+        for( int i = 0 ; i < json.length() ; i++) {
+            this.result.add( new Item(json.getJSONObject(i).getString("id"),
+                    json.getJSONObject(i).getString("title"),
+                    json.getJSONObject(i).getString("description"),
+                    json.getJSONObject(i).getDouble("price"),
+                    json.getJSONObject(i).getString("size"),
+                    json.getJSONObject(i).getString("collection"),
+                    json.getJSONObject(i).getString("gamme"),
+                    json.getJSONObject(i).getString("brand"),
+                    json.getJSONObject(i).getString("type")
+            ) );
+        }
+
+    }
+
+
+    public void executeHttpRequest(){
+        String url = "http://10.0.2.2/velo77/backend/api/panier/list.php?idUser=" + getIntent().getStringExtra("idUser");
+        //String url = "https://ghibliapi.herokuapp.com/films";
+
+
+
+        new GetAsyncTask(this).execute(url);
+    }
+
 }

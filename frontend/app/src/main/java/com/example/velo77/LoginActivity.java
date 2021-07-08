@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity implements PostAsyncTask.Li
 
                     Intent i = new Intent(this, HomeActivity.class);
                     i.putExtra("token", json.getString("token"));
+                    i.putExtra("idUser", json.getString("idUser"));
                     startActivity(i);
             }
         }

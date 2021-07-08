@@ -114,6 +114,7 @@ public class BikeActivity extends AppCompatActivity implements GetAsyncTask.List
         this.addBike(response);
         this.widget = findViewById(R.id.allCards);
         ItemAdapter adapter = new ItemAdapter( BikeActivity.this , this.result);
+        adapter.updateImage();
         this.widget.setAdapter(adapter);
 
 
@@ -126,7 +127,7 @@ public class BikeActivity extends AppCompatActivity implements GetAsyncTask.List
 
         for( int i = 0 ; i < json.length() ; i++) {
             this.result.add( new Item(json.getJSONObject(i).getString("id"),
-                                      json.getJSONObject(i).getString("name"),
+                                      json.getJSONObject(i).getString("title"),
                                       json.getJSONObject(i).getString("description"),
                                       json.getJSONObject(i).getDouble("price"),
                                       json.getJSONObject(i).getString("size"),

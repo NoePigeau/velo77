@@ -18,6 +18,8 @@ $type = isset( $_POST['type']) ? htmlspecialchars( $_POST['type'] ) : null;
 $brand = isset( $_POST['brand']) ? htmlspecialchars( $_POST['brand'] ) : null;
 
 
+
+
 if( !($name && $description && $price && $size && $collection && $series && $type && $brand) ){
     http_response_code(400);
     die();
@@ -31,6 +33,12 @@ if( getItemByName($name) !== null ){
 $idItem = itemInsert($name, $description, $price, $size, $collection, $series, $type, $brand );
 if( $idItem === null ){
     http_response_code(500);
+    die();
+
+}
+
+if(imgInsert($_FILES['img'] , $idUser)){
+    http_response_code(200);
     die();
 
 }
