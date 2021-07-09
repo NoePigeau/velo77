@@ -37,15 +37,8 @@ public class LoginActivity extends AppCompatActivity implements PostAsyncTask.Li
             @Override
             public void onClick(View v) {
 
-                //executeHttpRequest();
-                SharedPreferences shp = getSharedPreferences("ID" , MODE_MULTI_PROCESS);
-                SharedPreferences.Editor edit = shp.edit();
-                edit.clear();
-                edit.putString("token" , "1234");
-                edit.putString("idUser" , "7");
-                edit.apply();
-                Intent i = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(i);
+                executeHttpRequest();
+
 
 
 
@@ -65,11 +58,12 @@ public class LoginActivity extends AppCompatActivity implements PostAsyncTask.Li
                     this.responseText.setText(json.getString("token"));
 
 
-                    SharedPreferences shp = getSharedPreferences("ID" , MODE_PRIVATE);
-                    shp.edit().clear();
-                    shp.edit().putString("token" , json.getString("token"));
-                    shp.edit().putString("idUser" , json.getString("idUser"));
-                    shp.edit().apply();
+                    SharedPreferences shp = getSharedPreferences("ID" , MODE_MULTI_PROCESS);
+                    SharedPreferences.Editor edit = shp.edit();
+                    edit.clear();
+                    edit.putString("token" , json.getString("token"));
+                    edit.putString("idUser" , json.getString("idUser"));
+                    edit.apply();
                     Intent i = new Intent(this, HomeActivity.class);
                     startActivity(i);
             }

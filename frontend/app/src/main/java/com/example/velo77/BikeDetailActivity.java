@@ -100,14 +100,15 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
     }
 
     private void updateUIWhenStopingHTTPRequest(String response) throws JSONException {
+        switch (response){
+            case "500": Toast.makeText(getApplicationContext(),"une erreur est survenu !",Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(getApplicationContext(),"ajouté au panier !",Toast.LENGTH_SHORT).show();
 
-
+        }
 
         Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
-
-
-
-
 
     }
 

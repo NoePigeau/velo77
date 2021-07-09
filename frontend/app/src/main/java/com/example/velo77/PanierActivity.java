@@ -94,7 +94,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
 
         for( int i = 0 ; i < json.length() ; i++) {
             this.result.add( new Item(json.getJSONObject(i).getString("id"),
-                    json.getJSONObject(i).getString("title"),
+                    json.getJSONObject(i).getString("name"),
                     json.getJSONObject(i).getString("description"),
                     json.getJSONObject(i).getDouble("price"),
                     json.getJSONObject(i).getString("size"),
@@ -110,7 +110,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
 
     public void executeHttpRequest(){
         SharedPreferences shp = getSharedPreferences("ID" , MODE_MULTI_PROCESS);
-        String url = "http://10.0.2.2/velo77/backend/api/panier/list.php?idUser=" + shp.getString("idUser" , null);
+        String url = "http://10.0.2.2/velo77/backend/api/panier/list.php?idUser=" + shp.getString("idUser" , "7");
         //String url = "https://ghibliapi.herokuapp.com/films";
 
 
