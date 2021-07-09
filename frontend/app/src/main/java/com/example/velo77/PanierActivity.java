@@ -58,6 +58,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
                 return false;
             }
         });
+        executeHttpRequest();
     }
 
     @Override
