@@ -9,7 +9,7 @@
     android:layout_above="@id/bottom_navigation"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".HomeActivity"
+    tools:context=".PanierActivity"
     tools:ignore="NamespaceTypo">
 
     <LinearLayout
@@ -69,7 +69,6 @@
         android:id="@+id/allCards"
         android:layout_width="match_parent"
         android:layout_height="322dp">
-
 
     </ListView>
 

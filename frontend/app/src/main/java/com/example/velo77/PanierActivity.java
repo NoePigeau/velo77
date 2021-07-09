@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -89,6 +90,8 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
     }
 
     private void addBike( String response ) throws JSONException {
+
+        Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
 
         JSONArray json = new JSONArray( response );
         //this.textView.setText(json.toString());

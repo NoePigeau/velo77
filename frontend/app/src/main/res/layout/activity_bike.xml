@@ -9,7 +9,7 @@
     android:layout_above="@id/bottom_navigation"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".HomeActivity"
+    tools:context=".BikeActivity"
     tools:ignore="NamespaceTypo">
 
     <LinearLayout
