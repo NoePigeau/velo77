@@ -91,22 +91,28 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
 
     private void addBike( String response ) throws JSONException {
 
-        Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+        switch (response){
+            case "500": Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+                break;
+            case "404": Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                JSONArray json = new JSONArray( response );
+                //this.textView.setText(json.toString());
 
-        JSONArray json = new JSONArray( response );
-        //this.textView.setText(json.toString());
+                for( int i = 0 ; i < json.length() ; i++) {
+                    this.result.add( new Item(json.getJSONObject(i).getString("id"),
+                            json.getJSONObject(i).getString("name"),
+                            json.getJSONObject(i).getString("description"),
+                            json.getJSONObject(i).getDouble("price"),
+                            json.getJSONObject(i).getString("size"),
+                            json.getJSONObject(i).getString("collection"),
+                            json.getJSONObject(i).getString("gamme"),
+                            json.getJSONObject(i).getString("brand"),
+                            json.getJSONObject(i).getString("type")
+                    ) );
+                }
 
-        for( int i = 0 ; i < json.length() ; i++) {
-            this.result.add( new Item(json.getJSONObject(i).getString("id"),
-                    json.getJSONObject(i).getString("name"),
-                    json.getJSONObject(i).getString("description"),
-                    json.getJSONObject(i).getDouble("price"),
-                    json.getJSONObject(i).getString("size"),
-                    json.getJSONObject(i).getString("collection"),
-                    json.getJSONObject(i).getString("gamme"),
-                    json.getJSONObject(i).getString("brand"),
-                    json.getJSONObject(i).getString("type")
-            ) );
         }
 
     }

@@ -22,10 +22,22 @@ public class GetURLConnection {
             conn.connect();
             InputStream in = conn.getInputStream();
             // 3 - Download and decode the string response
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line);
+
+            int responseCode = conn.getResponseCode();
+
+            if(responseCode == 400) return "400";
+            if(responseCode == 404) return "404";
+            if(responseCode == 500) return "500";
+            if(responseCode == 409) return "409";
+
+            if(responseCode == 200) {//if valid, read result from server
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    stringBuilder.append(line);
+                }
+                return stringBuilder.toString();
             }
 
         } catch (MalformedURLException exception){
@@ -36,7 +48,7 @@ public class GetURLConnection {
 
         }
 
-        return stringBuilder.toString();
+        return "500";
     }
 
 }
