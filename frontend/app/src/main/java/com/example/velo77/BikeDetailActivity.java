@@ -24,7 +24,7 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
     private Item data;
     private TextView price, description, collection, brand, series, type;
     private Button btnPanier;
-    private SharedPreferences shp = getSharedPreferences("ID" , MODE_PRIVATE);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +119,7 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
 
         JSONObject json = new JSONObject();
         try {
+            SharedPreferences shp = getSharedPreferences("ID" , MODE_MULTI_PROCESS);
             json.put("idUser", shp.getString("idUser" , null) );
             json.put("idItem", this.data.getId());
 

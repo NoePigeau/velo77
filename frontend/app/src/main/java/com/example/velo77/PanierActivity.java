@@ -25,7 +25,6 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
     BottomNavigationView bottomNavigationView;
     private ListView widget;
     private List<Item> result = new ArrayList<>();
-    private SharedPreferences shp = getSharedPreferences("ID" , MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +109,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
 
 
     public void executeHttpRequest(){
+        SharedPreferences shp = getSharedPreferences("ID" , MODE_MULTI_PROCESS);
         String url = "http://10.0.2.2/velo77/backend/api/panier/list.php?idUser=" + shp.getString("idUser" , null);
         //String url = "https://ghibliapi.herokuapp.com/films";
 
