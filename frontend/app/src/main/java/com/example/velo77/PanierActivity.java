@@ -82,7 +82,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
         this.addBike(response);
         this.widget = findViewById(R.id.allCards);
         ItemAdapter adapter = new ItemAdapter( PanierActivity.this , this.result);
-        adapter.updateImage();
+        //adapter.updateImage();
         this.widget.setAdapter(adapter);
 
 
