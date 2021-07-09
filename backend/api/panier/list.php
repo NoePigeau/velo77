@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../../dao/panier.php';
 require_once __DIR__ . '/../../utils/server.php';
 
-ensureHttpMethod('POST');
+ensureHttpMethod('GET');
 
 
 $idUser = isset( $_GET['idUser'] ) ? htmlspecialchars( $_GET['idUser'] ) : null;
