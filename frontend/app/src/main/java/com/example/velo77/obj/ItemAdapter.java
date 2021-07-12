@@ -81,7 +81,7 @@ public class ItemAdapter extends BaseAdapter {
     public void updateImage(ImageView iv) {
 
 
-        String url = "http://10.0.2.2/velo77/backend/api/img-item/item_1.png";
+        String url = "http://10.0.2.2/velo77/backend/img-item/item_1.png";
         new LoadImages(iv).execute(url);
     }
 }
