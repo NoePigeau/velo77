@@ -19,7 +19,6 @@ import java.util.List;
 public class ItemAdapter extends BaseAdapter {
     private Context context;
     private List<Item> data;
-    private ImageView iv;
 
     public ItemAdapter(Context c, List<Item> d) {
         this.context = c;
@@ -53,9 +52,11 @@ public class ItemAdapter extends BaseAdapter {
 
 
         TextView tv_name = convertView.findViewById(R.id.card_name);
-        TextView tv_id = convertView.findViewById(R.id.card_id);
+        TextView tv_price = convertView.findViewById(R.id.card_price);
+        TextView tv_description = convertView.findViewById(R.id.card_description);
         LinearLayout LL = convertView.findViewById(R.id.base_id_card);
-        this.iv = convertView.findViewById(R.id.imageView);
+        ImageView iv = convertView.findViewById(R.id.imgCard);
+
 
 
 
@@ -69,17 +70,19 @@ public class ItemAdapter extends BaseAdapter {
         });
 
         tv_name.setText(current.getName());
-        tv_id.setText(current.getId());
+        tv_price.setText(current.getId());
+        tv_description.setText(current.getDescription());
+        updateImage(iv);
 
         return convertView;
     }
 
 
-    public void updateImage() {
+    public void updateImage(ImageView iv) {
 
 
         String url = "https://api.androidhive.info/images/sample.jpg";
-        new LoadImages(this.iv).execute(url);
+        new LoadImages(iv).execute(url);
     }
 }
 
