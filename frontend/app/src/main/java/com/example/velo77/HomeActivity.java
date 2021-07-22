@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_store:
-                        startActivity(new Intent(getApplicationContext(),SelectItemActivity.class));
+                        startActivity(new Intent(getApplicationContext(),WorkshopActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_shop:

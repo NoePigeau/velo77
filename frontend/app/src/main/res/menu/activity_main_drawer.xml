@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_bikes"
+            android:icon="@drawable/velo_route"
+            android:title="Vélos" />
+        <item
+            android:id="@+id/nav_equipement"
+            android:icon="@drawable/maillot"
+            android:title="Equipements" />
+        <item
+            android:id="@+id/nav_atelier"
+            android:icon="@drawable/atelier"
+            android:title="Atelier" />
+    </group>
+</menu>

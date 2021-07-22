@@ -9,7 +9,7 @@
     android:layout_above="@id/bottom_navigation"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".PanierActivity"
+    tools:context=".WorkshopActivity"
     tools:ignore="NamespaceTypo">
 
     <LinearLayout
@@ -59,42 +59,33 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:gravity="center_horizontal"
-        android:text="Votre Panier"
+        android:text="Atelier"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp" />
-
-    <TextView
-        android:id="@+id/price_panier"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Prix total : 0 €"
-        android:textColor="@color/black"
-        android:textSize="30dp" />
-
 
 
     <ListView
 
         android:id="@+id/allCards"
         android:layout_width="match_parent"
-        android:layout_height="350dp">
+        android:layout_height="410dp">
 
     </ListView>
 
 
     <RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true" >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        app:itemTextColor="@color/black"
-        app:menu="@menu/bottom_navigation" />
-</RelativeLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            app:itemTextColor="@color/black"
+            app:menu="@menu/bottom_navigation" />
+    </RelativeLayout>
+
 </LinearLayout>
 

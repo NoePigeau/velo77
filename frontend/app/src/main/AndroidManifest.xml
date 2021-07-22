@@ -21,6 +21,7 @@
         <activity android:name=".PanierActivity" />
         <activity android:name=".BikeDetailActivity" />
         <activity android:name=".SelectItemActivity" />
+        <activity android:name=".WorkshopActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

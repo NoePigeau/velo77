@@ -56,9 +56,11 @@ public class BikeActivity extends AppCompatActivity implements GetAsyncTask.List
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_search:
+                        startActivity(new Intent(getApplicationContext(),SelectItemActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_store:
-                        startActivity(new Intent(getApplicationContext(),BikeActivity.class));
+                        startActivity(new Intent(getApplicationContext(),WorkshopActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_shop:

@@ -60,6 +60,12 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
                 new AlertDialog.Builder( BikeDetailActivity.this)
                         .setTitle("Ajouter au panier")
                         .setMessage("voulez-vous ajouter cette article au panier ?")
+                        .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
                         .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -67,12 +73,7 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
 
                             }
                         })
-                        .setNegativeButton("Non", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
 
-                            }
-                        })
                         .setCancelable(false)
                         .show();
                 
