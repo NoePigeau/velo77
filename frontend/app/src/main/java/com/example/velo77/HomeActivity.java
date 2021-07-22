@@ -14,28 +14,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
-    private Button bikes, testo;
+    private Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        this.bikes = findViewById(R.id.btn_bikes);
-        this.testo = findViewById(R.id.btn_testo);
-        this.bikes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent( HomeActivity.this , BikeActivity.class);
-                startActivity(i);
-            }
-        });
+        this.logout = findViewById(R.id.btn_logout);
 
-        this.testo.setOnClickListener(new View.OnClickListener() {
+
+        this.logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences shp = getSharedPreferences("ID" , MODE_MULTI_PROCESS);
                 Toast.makeText(getApplicationContext(),shp.getString("idUser" , "raté"),Toast.LENGTH_SHORT).show();
+                shp.edit().clear();
+                Intent i = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(i);
             }
         });
 
@@ -50,11 +46,11 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         return true;
                     case R.id.nav_search:
-                        startActivity(new Intent(getApplicationContext(),BikeActivity.class));
+                        startActivity(new Intent(getApplicationContext(),SelectItemActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_store:
-                        startActivity(new Intent(getApplicationContext(),BikeActivity.class));
+                        startActivity(new Intent(getApplicationContext(),SelectItemActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_shop:

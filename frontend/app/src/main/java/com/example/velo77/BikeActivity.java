@@ -114,7 +114,6 @@ public class BikeActivity extends AppCompatActivity implements GetAsyncTask.List
         this.addBike(response);
         this.widget = findViewById(R.id.allCards);
         ItemAdapter adapter = new ItemAdapter( BikeActivity.this , this.result);
-        //adapter.updateImage();
         this.widget.setAdapter(adapter);
 
 
@@ -141,7 +140,9 @@ public class BikeActivity extends AppCompatActivity implements GetAsyncTask.List
     }
 
     public void executeHttpRequest(){
-        String url = "http://10.0.2.2/velo77/backend/api/item/list.php?name=" + bike_name;
+        Intent i = getIntent();
+        String url = i.getStringExtra("url") + "&name=" + bike_name;
+        //String url = "http://10.0.2.2/velo77/backend/api/item/list.php?name=" + bike_name;
         //String url = "https://ghibliapi.herokuapp.com/films" + bike_name;
 
         new GetAsyncTask(this).execute(url);

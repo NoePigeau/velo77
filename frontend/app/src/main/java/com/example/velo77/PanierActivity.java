@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,11 +27,14 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
     BottomNavigationView bottomNavigationView;
     private ListView widget;
     private List<Item> result = new ArrayList<>();
+    private TextView totalPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_panier);
+
+        this.totalPrice = findViewById(R.id.price_panier);
 
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -83,7 +87,6 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
         this.addBike(response);
         this.widget = findViewById(R.id.allCards);
         ItemAdapter adapter = new ItemAdapter( PanierActivity.this , this.result);
-        //adapter.updateImage();
         this.widget.setAdapter(adapter);
 
 
@@ -100,7 +103,10 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
                 JSONArray json = new JSONArray( response );
                 //this.textView.setText(json.toString());
 
+                double sum = 0.0;
+
                 for( int i = 0 ; i < json.length() ; i++) {
+                    sum += json.getJSONObject(i).getDouble("price");
                     this.result.add( new Item(json.getJSONObject(i).getString("id"),
                             json.getJSONObject(i).getString("name"),
                             json.getJSONObject(i).getString("description"),
@@ -112,6 +118,8 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
                             json.getJSONObject(i).getString("type")
                     ) );
                 }
+                this.totalPrice.setText("Prix total : " + sum + " €");
+
 
         }
 

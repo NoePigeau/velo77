@@ -54,15 +54,26 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/welcome"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="20dp"
         android:gravity="center_horizontal"
         android:text="Votre Panier"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/price_panier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Prix total : 0 €"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+
+
 
     <ListView
 

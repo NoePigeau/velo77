@@ -72,16 +72,16 @@ public class ItemAdapter extends BaseAdapter {
         tv_name.setText(current.getName());
         tv_price.setText(current.getPrice() + " €");
         tv_description.setText(current.getDescription());
-        updateImage(iv);
+        updateImage(iv, current.getId());
 
         return convertView;
     }
 
 
-    public void updateImage(ImageView iv) {
+    public void updateImage(ImageView iv, String item) {
 
 
-        String url = "http://10.0.2.2/velo77/backend/img-item/item_1.png";
+        String url = "http://10.0.2.2/velo77/backend/img-item/item_" + item + ".png";
         new LoadImages(iv).execute(url);
     }
 }

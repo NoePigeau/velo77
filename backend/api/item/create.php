@@ -37,11 +37,6 @@ if( $idItem === null ){
 
 }
 
-if(imgInsert($_FILES['img'] , $idUser)){
-    http_response_code(200);
-    die();
-
-}
 
 http_response_code(201);
 

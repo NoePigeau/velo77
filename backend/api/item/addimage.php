@@ -12,6 +12,13 @@ if( $img === null ){
     die();
 }
 
+if( !isset($_POST['id']) || getItemById( $_POST['id'] ) === null ) {
+
+    http_response_code(404);
+    die();
+
+}
+
 
 $idItem = imgInsert( $img , $_POST['id'] );
 if( $idItem == false ){

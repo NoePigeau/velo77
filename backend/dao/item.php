@@ -63,7 +63,7 @@ function searchItem(int $offset, int $limit, ?string $order, ?string $dir,
 }
 
 function checkType( ?string $type): bool {
-    $types = [ 'normal' , 'electric' , 'accessory' , 'part' ];
+    $types = [ 'normal' , 'electric' , 'accessory' , 'piece' ];
 
     if($type === null ) return false;
 
