@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : jeu. 08 juil. 2021 à 09:39
+-- Généré le : jeu. 22 juil. 2021 à 09:20
 -- Version du serveur :  10.4.13-MariaDB
 -- Version de PHP : 7.3.21
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `item` (
   `brand` varchar(64) COLLATE utf8_bin NOT NULL,
   `type` varchar(32) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `item`
@@ -50,7 +50,10 @@ INSERT INTO `item` (`id`, `name`, `description`, `price`, `size`, `collection`, 
 (2, 'velo2', 'ce velo vtt est juste incroyable', 5.123, 'S,XS,M,L', 'men', 'course', 'fervelo', 'electric'),
 (3, 'velo LOOK', 'ce velo vtt est juste incroyable disigné pour femme', 800.45, 'S,XS,M,L', 'women', 'ville', 'colnago', 'normal'),
 (4, 'tarmac', 'ce velo est fait pour la competetion insane !!', 6000.5, 'XS,S,M,L', 'men', 'route', 'specialized', 'normal'),
-(5, 'newTarmac', 'ce velo est fait pour la competetion insane tarmac !!', 6000.5, 'XS,S,M,L', 'men', 'route', 'specialized', 'normal');
+(5, 'newTarmac', 'ce velo est fait pour la competetion insane tarmac !!', 6000.5, 'XS,S,M,L', 'men', 'route', 'specialized', 'normal'),
+(6, 'other bike borther', 'it is the bike brother boiii', 5688.5, 'XS,S,M,L', 'woman', 'fast', 'specialized', 'normal'),
+(7, 'Casque de velo', 'ceci est un casque qui protege la tete (c\'est vré)', 22.5, 'XS,S,M,L', 'woman', 'fast', 'quechua', 'accessory'),
+(8, 'derailleur de velo', 'ceci est un derailleur de velo qui marche (c\'est vré)', 50.5, 'XS,S,M,L', 'men', 'fast', 'bikeX', 'piece');
 
 -- --------------------------------------------------------
 
