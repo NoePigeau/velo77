@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.velo77.obj.Item;
-import com.example.velo77.obj.ItemAdapter;
+import com.example.velo77.obj.PanierAdapter;
 import com.example.velo77.request.GetAsyncTask;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -63,7 +63,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
                 return false;
             }
         });
-        executeHttpRequest();
+        getPanier();
     }
 
     @Override
@@ -86,7 +86,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
     private void updateUIWhenStopingHTTPRequest(String response) throws JSONException {
         this.addBike(response);
         this.widget = findViewById(R.id.allCards);
-        ItemAdapter adapter = new ItemAdapter( PanierActivity.this , this.result);
+        PanierAdapter adapter = new PanierAdapter( PanierActivity.this , this.result);
         this.widget.setAdapter(adapter);
 
 
@@ -99,6 +99,9 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
                 break;
             case "404": Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
                 break;
+            case "410":
+                result.clear();
+                getPanier();
             default:
                 JSONArray json = new JSONArray( response );
                 //this.textView.setText(json.toString());
@@ -117,6 +120,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
                             json.getJSONObject(i).getString("brand"),
                             json.getJSONObject(i).getString("type")
                     ) );
+                    this.result.get(i).setNumber(json.getJSONObject(i).getInt("nbItem"));
                 }
                 this.totalPrice.setText("Prix total : " + sum + " €");
 
@@ -126,14 +130,23 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
     }
 
 
-    public void executeHttpRequest(){
+    public void getPanier(){
         SharedPreferences shp = getSharedPreferences("ID" , MODE_MULTI_PROCESS);
-        String url = "http://10.0.2.2/velo77/backend/api/panier/list.php?idUser=" + shp.getString("idUser" , "7");
+        String url = "http://10.0.2.2/velo77/backend/api/panier/list.php?idUser=" + shp.getString("idUser" , "0");
         //String url = "https://ghibliapi.herokuapp.com/films";
 
 
 
         new GetAsyncTask(this).execute(url);
     }
+
+    public void deletePanier(int id){
+        String url = "http://10.0.2.2/velo77/backend/api/panier/delete.php?id=" + id;
+
+
+        new GetAsyncTask(this).execute(url);
+    }
+
+
 
 }

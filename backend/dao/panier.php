@@ -43,6 +43,15 @@ function getPanierFromUser(int $idUser) {
 
     return databaseFindAll($conn, $sql, $params);
 
+}
+
+function deletePanier( int $id): ?int {
+
+    $conn = getDatabaseConnection();
+    $sql = "DELETE FROM panier WHERE idPanier = ?";
+    $params = [$id];
+
+    return databaseExec($conn, $sql, $params);
 
 
 }

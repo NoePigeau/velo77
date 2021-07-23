@@ -29,6 +29,7 @@ public class GetURLConnection {
             if(responseCode == 404) return "404";
             if(responseCode == 500) return "500";
             if(responseCode == 409) return "409";
+            if(responseCode == 410) return "410";
 
             if(responseCode == 200) {//if valid, read result from server
 

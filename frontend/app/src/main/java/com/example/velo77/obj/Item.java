@@ -14,6 +14,7 @@ public class Item implements Serializable {
     private final String series;
     private final String brand;
     private final String type;
+    private int number = 0;
 
 
 
@@ -63,6 +64,17 @@ public class Item implements Serializable {
 
     public String getType() {
         return type;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+
+
+    public void setNumber( int number ) {
+        this.number = number;
+
     }
 
 
