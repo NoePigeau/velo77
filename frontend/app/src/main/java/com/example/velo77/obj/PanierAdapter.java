@@ -79,7 +79,7 @@ public class PanierAdapter extends BaseAdapter {
                         .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                ((PanierActivity)context).deletePanier(Integer.parseInt(current.getId()));
+                                ((PanierActivity)context).deletePanier(current.getId());
 
                             }
                         })
