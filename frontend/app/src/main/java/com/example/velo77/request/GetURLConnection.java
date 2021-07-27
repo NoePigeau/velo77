@@ -50,7 +50,7 @@ public class GetURLConnection {
 
         }
 
-        return "505";
+        return "410";
     }
 
 }

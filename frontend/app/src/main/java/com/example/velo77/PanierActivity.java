@@ -94,16 +94,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
     private void addBike( String response ) throws JSONException {
 
         switch (response){
-            case "500":
-                totalPrice.setText("nice cock 500!");
-                result.clear();
-                getPanier();
-
-                break;
-            case "404": totalPrice.setText("nice cock 404!");
-                break;
             case "410":
-                totalPrice.setText("nice cock 410!");
                 result.clear();
                 getPanier();
                 break;
