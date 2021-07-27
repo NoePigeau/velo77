@@ -8,12 +8,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.velo77.obj.Item;
+import com.example.velo77.request.LoadImages;
 import com.example.velo77.request.PostAsyncTask;
 
 import org.json.JSONException;
@@ -28,6 +30,7 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
     private Item data;
     private TextView price, description, collection, brand, series, type;
     private Button btnPanier, btnXS, btnS, btnM, btnL;
+    private ImageView iv;
     private List<Button> allButton = new ArrayList<>();
 
 
@@ -43,6 +46,8 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
         this.brand = findViewById(R.id.brand_bike);
         this.series = findViewById(R.id.series_bike);
         this.type = findViewById(R.id.type_bike);
+
+        this.iv = findViewById(R.id.imageView);
 
         this.btnXS = findViewById(R.id.XS); this.btnS = findViewById(R.id.S);
         this.btnM = findViewById(R.id.M); this.btnL = findViewById(R.id.L);
@@ -128,6 +133,8 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
                 break;
             default:
                 Toast.makeText(getApplicationContext(),"ajouté au panier !",Toast.LENGTH_SHORT).show();
+                SharedPreferences shp = getSharedPreferences("ID" , MODE_MULTI_PROCESS);
+                updateImage(this.iv ,shp.getString("idUser" , null));
 
         }
 
@@ -139,7 +146,6 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
 
     public void executeHttpRequest(){
         String url = "http://10.0.2.2/velo77/backend/api/panier/create.php";
-        //String url = "https://ghibliapi.herokuapp.com/films";
 
         JSONObject json = new JSONObject();
         try {
@@ -166,5 +172,12 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
         b.setTextColor(Color.parseColor("#FFFFFF"));
         b.setBackgroundColor(Color.parseColor("#7CCB31"));
 
+    }
+
+    public void updateImage(ImageView iv, String item) {
+
+
+        String url = "http://10.0.2.2/velo77/backend/img-item/item_" + item + ".png";
+        new LoadImages(iv).execute(url);
     }
 }
