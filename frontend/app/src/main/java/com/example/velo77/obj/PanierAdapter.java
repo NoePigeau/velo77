@@ -8,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.velo77.PanierActivity;
 import com.example.velo77.R;
 import com.example.velo77.request.LoadImages;
 
@@ -65,7 +65,7 @@ public class PanierAdapter extends BaseAdapter {
         tv_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((PanierActivity)context).deletePanier(/*current.getId()*/);
+                Toast.makeText(context,"IDDDDD: " + current.getId(),Toast.LENGTH_SHORT).show();
                 /*new AlertDialog.Builder( context )
                         .setTitle("Supprimer du panier")
                         .setMessage("voulez-vous supprimer cet article au panier ?")
@@ -89,6 +89,15 @@ public class PanierAdapter extends BaseAdapter {
 
             }
         });
+
+        /*LL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent( context , BikeDetailActivity.class);
+                i.putExtra("item", current);
+                context.startActivity(i);
+            }
+        });*/
 
         tv_name.setText(current.getName());
         tv_price.setText(current.getPrice() + " €");
