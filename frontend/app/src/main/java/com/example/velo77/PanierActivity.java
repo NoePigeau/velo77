@@ -100,6 +100,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
             case "404": Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
                 break;
             case "410":
+                totalPrice.setText("nice cock !");
                 result.clear();
                 getPanier();
                 break;
