@@ -100,7 +100,6 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
             case "404": Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
                 break;
             case "410":
-                Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
                 result.clear();
                 getPanier();
                 break;
@@ -143,11 +142,11 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
     }
 
     public void deletePanier(String id){
-        //String url = "http://10.0.2.2/velo77/backend/api/panier/delete.php?id=" + id;
+        String url = "http://10.0.2.2/velo77/backend/api/panier/delete.php?id=" + id;
         totalPrice.setText("bonjour !" + id);
 
 
-        //new GetAsyncTask(this).execute(url);
+        new GetAsyncTask(this).execute(url);
     }
 
 
