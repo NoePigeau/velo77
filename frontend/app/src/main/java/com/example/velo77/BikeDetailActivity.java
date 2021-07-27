@@ -47,7 +47,7 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
         this.series = findViewById(R.id.series_bike);
         this.type = findViewById(R.id.type_bike);
 
-        this.iv = findViewById(R.id.imageView);
+        this.iv = findViewById(R.id.img_item);
 
         this.btnXS = findViewById(R.id.XS); this.btnS = findViewById(R.id.S);
         this.btnM = findViewById(R.id.M); this.btnL = findViewById(R.id.L);
