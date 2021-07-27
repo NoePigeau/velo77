@@ -111,7 +111,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
 
                 for( int i = 0 ; i < json.length() ; i++) {
                     sum += json.getJSONObject(i).getDouble("price");
-                    this.result.add( new Item(json.getJSONObject(i).getString("id"),
+                    this.result.add( new Item(json.getJSONObject(i).getString("idPanier"),
                             json.getJSONObject(i).getString("name"),
                             json.getJSONObject(i).getString("description"),
                             json.getJSONObject(i).getDouble("price"),
@@ -143,8 +143,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
 
     public void deletePanier(String id){
         String url = "http://10.0.2.2/velo77/backend/api/panier/delete.php?id=" + id;
-        totalPrice.setText("bonjour !" + id);
-
+        
 
         new GetAsyncTask(this).execute(url);
     }

@@ -1,6 +1,8 @@
 package com.example.velo77.obj;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,8 +67,8 @@ public class PanierAdapter extends BaseAdapter {
         tv_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((PanierActivity)context).deletePanier(current.getId());
-                /*new AlertDialog.Builder( context )
+
+                new AlertDialog.Builder( context )
                         .setTitle("Supprimer du panier")
                         .setMessage("voulez-vous supprimer cet article au panier ?")
                         .setNegativeButton("Non", new DialogInterface.OnClickListener() {
@@ -79,25 +81,17 @@ public class PanierAdapter extends BaseAdapter {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                //((PanierActivity)context).deletePanier(current.getId());
+                                ((PanierActivity)context).deletePanier(current.getId());
 
                             }
                         })
 
                         .setCancelable(false)
-                        .show();*/
+                        .show();
 
             }
         });
 
-        /*LL.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent( context , BikeDetailActivity.class);
-                i.putExtra("item", current);
-                context.startActivity(i);
-            }
-        });*/
 
         tv_name.setText(current.getName());
         tv_price.setText(current.getPrice() + " €");
