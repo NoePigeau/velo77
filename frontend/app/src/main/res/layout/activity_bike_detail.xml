@@ -89,7 +89,7 @@
                 android:padding="10sp">
 
                 <Button
-
+                    android:id="@+id/XS"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:text="XS"
@@ -101,7 +101,7 @@
                     app:strokeColor="#7CCB31"/>
 
                 <Button
-
+                    android:id="@+id/S"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:text="S"
@@ -114,7 +114,7 @@
 
 
                 <Button
-
+                    android:id="@+id/M"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:text="M"
@@ -126,7 +126,7 @@
                     app:strokeColor="#7CCB31"/>
 
                 <Button
-
+                    android:id="@+id/L"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:text="L"

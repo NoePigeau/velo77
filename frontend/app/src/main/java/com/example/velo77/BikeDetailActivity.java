@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,12 +19,16 @@ import com.example.velo77.request.PostAsyncTask;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BikeDetailActivity extends AppCompatActivity  implements  PostAsyncTask.Listeners{
 
     private TextView title;
     private Item data;
     private TextView price, description, collection, brand, series, type;
-    private Button btnPanier;
+    private Button btnPanier, btnXS, btnS, btnM, btnL;
+    private List<Button> allButton = new ArrayList<>();
 
 
     @Override
@@ -38,6 +43,23 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
         this.brand = findViewById(R.id.brand_bike);
         this.series = findViewById(R.id.series_bike);
         this.type = findViewById(R.id.type_bike);
+
+        this.btnXS = findViewById(R.id.XS); this.btnS = findViewById(R.id.S);
+        this.btnM = findViewById(R.id.M); this.btnL = findViewById(R.id.L);
+
+        this.allButton.add(this.btnXS); this.allButton.add(this.btnS);
+        this.allButton.add(this.btnM);this.allButton.add(this.btnL);
+
+        for( int i = 0 ; i < allButton.size() ; i++) {
+
+            int finalI = i;
+            allButton.get(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    buttonSelected(allButton.get(finalI));
+                }
+            });
+        }
 
         Intent i = getIntent();
         if (i != null ){
@@ -130,5 +152,19 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
         }
 
         new PostAsyncTask(this, json).execute(url);
+    }
+
+    public void buttonSelected(Button b) {
+
+        for( int i = 0 ; i < allButton.size() ; i++) {
+
+            this.allButton.get(i).setBackgroundColor(Color.parseColor("#FFFFFF"));
+            this.allButton.get(i).setTextColor(Color.parseColor("#7CCB31"));
+
+        }
+
+        b.setTextColor(Color.parseColor("#FFFFFF"));
+        b.setBackgroundColor(Color.parseColor("#7CCB31"));
+
     }
 }
