@@ -133,8 +133,8 @@ public class BikeDetailActivity extends AppCompatActivity  implements  PostAsync
                 break;
             default:
                 Toast.makeText(getApplicationContext(),"ajouté au panier !",Toast.LENGTH_SHORT).show();
-                SharedPreferences shp = getSharedPreferences("ID" , MODE_MULTI_PROCESS);
-                updateImage(this.iv ,shp.getString("idUser" , null));
+
+                updateImage(this.iv ,this.data.getId());
 
         }
 
