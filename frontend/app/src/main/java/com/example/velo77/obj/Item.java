@@ -15,6 +15,7 @@ public class Item implements Serializable {
     private final String brand;
     private final String type;
     private int number = 0;
+    private String idPanier = "0";
 
 
 
@@ -75,6 +76,14 @@ public class Item implements Serializable {
     public void setNumber( int number ) {
         this.number = number;
 
+    }
+
+    public String getIdPanier() {
+        return idPanier;
+    }
+
+    public void setIdPanier(String idPanier) {
+        this.idPanier = idPanier;
     }
 
 

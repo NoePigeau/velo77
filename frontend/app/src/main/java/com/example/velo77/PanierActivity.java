@@ -111,7 +111,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
 
                 for( int i = 0 ; i < json.length() ; i++) {
                     sum += json.getJSONObject(i).getDouble("price");
-                    this.result.add( new Item(json.getJSONObject(i).getString("idPanier"),
+                    this.result.add( new Item(json.getJSONObject(i).getString("id"),
                             json.getJSONObject(i).getString("name"),
                             json.getJSONObject(i).getString("description"),
                             json.getJSONObject(i).getDouble("price"),
@@ -122,6 +122,7 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
                             json.getJSONObject(i).getString("type")
                     ) );
                     this.result.get(i).setNumber(json.getJSONObject(i).getInt("nbItem"));
+                    this.result.get(i).setIdPanier(json.getJSONObject(i).getInt("idPanier") + "");
                 }
                 this.totalPrice.setText("Prix total : " + sum + " €");
 

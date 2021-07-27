@@ -81,7 +81,7 @@ public class PanierAdapter extends BaseAdapter {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                ((PanierActivity)context).deletePanier(current.getId());
+                                ((PanierActivity)context).deletePanier(current.getIdPanier());
 
                             }
                         })
