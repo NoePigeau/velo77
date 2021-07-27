@@ -8,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.velo77.PanierActivity;
 import com.example.velo77.R;
 import com.example.velo77.request.LoadImages;
 
@@ -65,7 +65,7 @@ public class PanierAdapter extends BaseAdapter {
         tv_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"IDDDDD: " + current.getId(),Toast.LENGTH_SHORT).show();
+                ((PanierActivity)context).deletePanier(current.getId());
                 /*new AlertDialog.Builder( context )
                         .setTitle("Supprimer du panier")
                         .setMessage("voulez-vous supprimer cet article au panier ?")
