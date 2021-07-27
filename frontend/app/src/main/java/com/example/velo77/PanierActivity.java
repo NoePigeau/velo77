@@ -142,9 +142,9 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
         new GetAsyncTask(this).execute(url);
     }
 
-    public void deletePanier(String id){
+    public void deletePanier(){
         //String url = "http://10.0.2.2/velo77/backend/api/panier/delete.php?id=" + id;
-        Toast.makeText(getApplicationContext(),"IDDDDD: " + id,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"IDDDDD",Toast.LENGTH_SHORT).show();
 
 
         //new GetAsyncTask(this).execute(url);

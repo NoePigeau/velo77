@@ -65,7 +65,7 @@ public class PanierAdapter extends BaseAdapter {
         tv_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((PanierActivity)context).deletePanier(current.getId());
+                ((PanierActivity)context).deletePanier(/*current.getId()*/);
                 /*new AlertDialog.Builder( context )
                         .setTitle("Supprimer du panier")
                         .setMessage("voulez-vous supprimer cet article au panier ?")
@@ -89,15 +89,6 @@ public class PanierAdapter extends BaseAdapter {
 
             }
         });
-
-        /*LL.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent( context , BikeDetailActivity.class);
-                i.putExtra("item", current);
-                context.startActivity(i);
-            }
-        });*/
 
         tv_name.setText(current.getName());
         tv_price.setText(current.getPrice() + " €");
