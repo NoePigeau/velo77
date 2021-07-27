@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -95,12 +94,12 @@ public class PanierActivity extends AppCompatActivity implements GetAsyncTask.Li
     private void addBike( String response ) throws JSONException {
 
         switch (response){
-            case "500": Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+            case "500":totalPrice.setText("nice cock 500!");
                 break;
-            case "404": Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+            case "404": totalPrice.setText("nice cock 404!");
                 break;
             case "410":
-                totalPrice.setText("nice cock !");
+                totalPrice.setText("nice cock 410!");
                 result.clear();
                 getPanier();
                 break;

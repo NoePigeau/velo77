@@ -18,9 +18,6 @@ if( !$id ) {
 $panier = deletePanier($id);
 if( $panier !== null ){
     
-    header('Content-Type: application/json');
-    echo json_encode( $panier );
-
     http_response_code(410);
     die();
 }
